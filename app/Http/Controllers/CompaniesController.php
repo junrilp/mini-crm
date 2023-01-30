@@ -48,6 +48,7 @@ class CompaniesController extends Controller
     public function store(CompanyCreateRequest $request)
     {
         try {
+           
             $newCompany = $request->validated();
 
             $fileName = $request->logo->getClientOriginalName();
@@ -57,15 +58,15 @@ class CompaniesController extends Controller
             }
 
             $request->logo->move(public_path('images'), $fileName);
-
+           
             $newCompany['logo'] = $fileName;
-            $company = Company::create($newCompany);
-
+            Company::create($newCompany);
+            
             Mail::to('junril090693@gmail.com')->send(new CompanyEmailNotification($request->name));
-
+            
             flash()->success('Your item has been saved successfully!');
 
-            return redirect()->route('companies.index', $company);
+            return redirect()->route('companies.index');
         } catch(\Exception $e) {
             dd($e->getMessage());
         }
@@ -135,7 +136,7 @@ class CompaniesController extends Controller
 
         flash()->success('Your item has been updated successfully!');
 
-        return redirect()->route('companies.index', $company);
+        return redirect()->route('companies.index');
     }
 
     /**

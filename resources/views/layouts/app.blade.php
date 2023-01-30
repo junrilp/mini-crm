@@ -9,9 +9,9 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-        <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="{{ url('build/assets/jquery.dataTables.min.css') }}">
+        <script src="{{ url('build/assets/jquery-1.11.3.min.js') }}"></script>
+        <script src="{{ url('build/assets/jquery.dataTables.min.js') }}"></script>
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
